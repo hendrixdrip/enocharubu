@@ -1,3 +1,12 @@
+## 📋 Table of Contents
+
+- [Folder Structure](#-folder-structure)
+- [Step 1 — Add Your Photo](#-step-1--add-your-photo)
+- [Step 2 — Activate the Contact Form](#️-step-2--activate-the-contact-form-free)
+- [Step 3 — Host on GitHub Pages](#-step-3--host-on-github-pages-free)
+- [How to Edit Content](#️-how-to-edit-content)
+- [Changing Colors](#-changing-colors)
+- [Support](#-support)
 # Personal Portfolio Website
 ## Setup & Hosting Guide (for beginners)
 
