@@ -1,4 +1,4 @@
-# Arubu Enoch — Personal Portfolio Website
+# Personal Portfolio Website
 ## Setup & Hosting Guide (for beginners)
 
 ---
