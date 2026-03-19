@@ -101,12 +101,7 @@ Just change the hex color codes to update the entire site's color scheme.
 
 ---
 
-## 📱 Social Links
 
-Your social links in `contact.html`:
-- **Facebook**: https://facebook.com/enocharubu
-- **Instagram**: https://instagram.com/enocharubu
-- **WhatsApp**: https://wa.me/2349056880659
 
 ---
 
