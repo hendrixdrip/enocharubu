@@ -101,10 +101,6 @@ Just change the hex color codes to update the entire site's color scheme.
 
 ---
 
-
-
----
-
 ## 📬 Support
 
 Questions? Email: enocharubu@gmail.com
