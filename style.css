@@ -59,10 +59,12 @@ nav {
 
 .nav-logo {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.5rem;
+  font-size: 1.85rem;
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
 }
 
 .nav-logo span { color: var(--gold); }
@@ -276,7 +278,7 @@ nav {
   width: 340px;
   height: 420px;
   object-fit: cover;
-  object-position: center center;
+  object-position: top center;
   border-radius: var(--radius);
   box-shadow: 0 20px 60px rgba(0,0,0,0.4);
   position: relative;
