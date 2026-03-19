@@ -53,7 +53,7 @@ Now when someone submits the form, the message goes to your email!
 1. Go to **https://github.com** and create a free account
 2. Click the **"+"** button → **"New repository"**
 3. Name it exactly: `yourusername.github.io`  
-   *(e.g., if your GitHub username is `enocharubu`, name it `enocharubu.github.io`)*
+   *(e.g., if your GitHub username is `gimo`, name it `gimo.github.io`)*
 4. Set it to **Public** → click **"Create repository"**
 
 ### Upload your files:
@@ -103,4 +103,4 @@ Just change the hex color codes to update the entire site's color scheme.
 
 ## 📬 Support
 
-Questions? Email: enocharubu@gmail.com
+Questions? Email: hendrixarubu@gmail.com
