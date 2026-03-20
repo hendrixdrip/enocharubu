@@ -44,7 +44,7 @@
         <h2>Let's start a conversation.</h2>
         <p>
           Whether you need a brand-new website, want to revamp an existing one, 
-          or are looking to grow your social media presence - I'd love to hear about 
+          or are looking to grow your social media presence — I'd love to hear about 
           your project.
         </p>
 
@@ -67,7 +67,7 @@
             <div class="contact-item-icon">📍</div>
             <div class="contact-item-text">
               <div class="label">Location</div>
-              <span>Available Worldwide</span>
+              <span>Nigeria 🇳🇬 (Available Worldwide)</span>
             </div>
           </div>
         </div>
@@ -102,18 +102,6 @@
       <div class="contact-form-wrap">
         <h3>Send a Message</h3>
 
-        <!--
-        ================================================================
-        HOW TO ACTIVATE THIS CONTACT FORM (free, takes 2 minutes):
-        ----------------------------------------------------------------
-        1. Go to https://formspree.io and create a free account
-        2. Click "New Form" and name it (e.g., "Portfolio Contact")
-        3. Copy your unique form endpoint URL (looks like:
-           https://formspree.io/f/xabc1234)
-        4. Replace "YOUR_FORMSPREE_ENDPOINT" below with that URL
-        5. Done! Submissions will arrive in your email inbox.
-        ================================================================
-        -->
         <form id="contactForm" action="https://formspree.io/f/xjgalgjg" method="POST">
           <input type="hidden" name="_subject" value="New message from portfolio website" />
           <!-- Honeypot anti-spam field (hidden) -->
@@ -122,11 +110,11 @@
           <div class="form-row">
             <div class="form-group">
               <label for="firstName">First Name *</label>
-              <input type="text" id="firstName" name="firstName" placeholder="Joshua" required />
+              <input type="text" id="firstName" name="firstName" placeholder="John" required />
             </div>
             <div class="form-group">
               <label for="lastName">Last Name</label>
-              <input type="text" id="lastName" name="lastName" placeholder="Timothy" />
+              <input type="text" id="lastName" name="lastName" placeholder="Doe" />
             </div>
           </div>
 
@@ -193,13 +181,6 @@
     const successMsg = document.getElementById('formSuccess');
 
     form.addEventListener('submit', async function(e) {
-      // Only intercept if Formspree endpoint is set
-      if (form.action === 'YOUR_FORMSPREE_ENDPOINT' || form.action.includes('YOUR_FORMSPREE')) {
-        e.preventDefault();
-        alert('⚠️ To activate the form:\n\n1. Go to formspree.io\n2. Create a free form\n3. Replace YOUR_FORMSPREE_ENDPOINT in contact.html with your form URL');
-        return;
-      }
-
       e.preventDefault();
       submitBtn.textContent = 'Sending…';
       submitBtn.disabled = true;
