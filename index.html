@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Arubu Enoch — Freelance Web Designer</title>
-  <meta name="description" content="Freelance Web Designer & Social Media Marketer helping startups build their online presence with modern, effective websites." />
+  <title>Arubu Enoch | Freelance Web Designer</title>
+  <meta name="description" content="Freelance Web Designer and Social Media Marketer helping startups build their online presence with modern, effective websites." />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
 </head>
 <body>
 
-  <!-- ======== NAVIGATION ======== -->
+  <!-- NAV -->
   <nav>
     <a href="index.html" class="nav-logo">
-      <img src="assets/logo.jpg" alt="Hendrix Logo" style="height:52px; width:52px; object-fit:cover; border-radius:50%; border:2px solid var(--gold); vertical-align:middle; margin-right:12px;" />Arubu <span>Enoch</span>
+      <img src="assets/logo.jpg" alt="Hendrix Logo" style="height:52px;width:52px;object-fit:cover;border-radius:50%;border:2px solid var(--gold);vertical-align:middle;margin-right:12px;" />Arubu <span>Enoch</span>
     </a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -21,11 +21,12 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
       <li><a href="services.html">Services</a></li>
+      <li><a href="blog-ai-video.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- ======== HERO ======== -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-text">
@@ -33,8 +34,8 @@
         <h1 class="fade-up delay-1">Hi, I'm <span>Arubu</span><br>Enoch</h1>
         <p class="subtitle fade-up delay-2">Freelance Web Designer &amp; Social Media Marketer</p>
         <p class="fade-up delay-2">
-          I help startups and businesses build their online presence with custom, 
-          responsive, and engaging websites — and grow their audience through 
+          I help startups and businesses build their online presence with custom,
+          responsive, and engaging websites. I also grow their audience through
           strategic social media marketing.
         </p>
         <div class="hero-btns fade-up delay-3">
@@ -42,31 +43,21 @@
           <a href="contact.html" class="btn btn-outline">Let's Work Together</a>
         </div>
       </div>
-
       <div class="hero-photo-wrap fade-up delay-2">
-        <!--
-          ===================================================
-          TO ADD YOUR PHOTO:
-          1. Create a folder called "assets" inside your portfolio folder
-          2. Put your photo in it and name it "photo.jpg"
-          3. Replace the <div> below with this <img> tag:
-             <img src="assets/photo.jpg" alt="Arubu Enoch" class="hero-photo" />
-          ===================================================
-        -->
         <img src="assets/photo.jpg" alt="Arubu Enoch" class="hero-photo"
-             onerror="this.style.display='none'; document.getElementById('photo-placeholder').style.display='flex';" />
+             onerror="this.style.display='none';document.getElementById('photo-placeholder').style.display='flex';" />
         <div class="hero-photo-placeholder" id="photo-placeholder" style="display:none;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
             <circle cx="12" cy="7" r="4"/>
           </svg>
-          <span>Add photo.jpg<br>to /assets folder</span>
+          <span>Add photo.jpg to /assets folder</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ======== ABOUT ======== -->
+  <!-- ABOUT -->
   <section class="about-section">
     <div class="section-inner">
       <div class="about-grid">
@@ -78,27 +69,18 @@
           <p class="section-label">About Me</p>
           <h2>Creative designer.<br>Digital strategist.</h2>
           <p>
-            I'm a freelance web designer and social media marketer based in Nigeria, 
+            I'm a freelance web designer and social media marketer based in Nigeria,
             passionate about helping startups build a powerful digital footprint.
           </p>
           <p>
-            From crafting custom, responsive websites to running targeted social media 
-            campaigns, I deliver end-to-end digital solutions that drive real results 
+            From crafting custom, responsive websites to running targeted social media
+            campaigns, I deliver end-to-end digital solutions that drive real results
             for growing businesses.
           </p>
           <div class="about-stats">
-            <div class="stat-item">
-              <div class="num">10+</div>
-              <div class="label">Projects Done</div>
-            </div>
-            <div class="stat-item">
-              <div class="num">5+</div>
-              <div class="label">Happy Clients</div>
-            </div>
-            <div class="stat-item">
-              <div class="num">2+</div>
-              <div class="label">Years Experience</div>
-            </div>
+            <div class="stat-item"><div class="num">10+</div><div class="label">Projects Done</div></div>
+            <div class="stat-item"><div class="num">5+</div><div class="label">Happy Clients</div></div>
+            <div class="stat-item"><div class="num">2+</div><div class="label">Years Experience</div></div>
           </div>
           <br />
           <a href="contact.html" class="btn btn-dark" style="margin-top:1rem;">Hire Me</a>
@@ -107,7 +89,7 @@
     </div>
   </section>
 
-  <!-- ======== SERVICES PREVIEW ======== -->
+  <!-- SERVICES PREVIEW -->
   <section class="services-preview">
     <div class="section-inner">
       <p class="section-label">What I Do</p>
@@ -139,30 +121,37 @@
           <p>Keep your site fast, secure, visible, and up to date.</p>
         </div>
       </div>
-      <div style="text-align:center; margin-top:3rem;">
-        <a href="services.html" class="btn btn-primary">See Full Details →</a>
+      <div style="text-align:center;margin-top:3rem;">
+        <a href="services.html" class="btn btn-primary">See Full Details</a>
       </div>
     </div>
   </section>
 
-  <!-- ======== PORTFOLIO HIGHLIGHTS ======== -->
+  <!-- PORTFOLIO HIGHLIGHTS -->
   <section class="portfolio-section">
     <div class="section-inner">
       <p class="section-label">My Work</p>
       <h2 class="section-title">Portfolio <span>Highlights</span></h2>
       <p class="section-sub">A selection of recent projects that showcase my design approach and capabilities.</p>
       <div class="portfolio-grid">
+
         <div class="portfolio-card">
-          <div class="portfolio-card-img" style="background:linear-gradient(135deg,#2d4a3e,#4a7c65);">
-            <span style="color:rgba(255,255,255,0.6);font-size:0.9rem;">House of Burn — Studio Website</span>
+          <div class="portfolio-card-img" style="padding:0;overflow:hidden;position:relative;">
+            <img src="assets/hob-screenshot.png" alt="House of Burn Website"
+                 style="width:100%;height:100%;object-fit:cover;display:block;"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div style="display:none;width:100%;height:100%;background:linear-gradient(135deg,#2d4a3e,#4a7c65);position:absolute;top:0;left:0;align-items:center;justify-content:center;">
+              <span style="color:rgba(255,255,255,0.6);font-size:0.85rem;text-align:center;padding:1rem;">Upload hob-screenshot.png to /assets</span>
+            </div>
           </div>
           <div class="portfolio-card-body">
             <span class="portfolio-tag">Web Design</span>
             <h3>House of Burn</h3>
             <p>A fitness studio website with class scheduling, online booking, and a seamless mobile experience.</p>
-            <a href="https://www.houseofburnpilates.com" target="_blank" rel="noopener" class="btn btn-dark" style="margin-top:1rem; font-size:0.82rem; padding:9px 18px;">Visit Site →</a>
+            <a href="https://www.houseofburnpilates.com" target="_blank" rel="noopener" class="btn btn-dark" style="margin-top:1rem;font-size:0.82rem;padding:9px 18px;">Visit Site</a>
           </div>
         </div>
+
         <div class="portfolio-card">
           <div class="portfolio-card-img" style="background:linear-gradient(135deg,#3a2a1a,#7a5a30);">
             <span style="color:rgba(255,255,255,0.6);font-size:0.9rem;">E-Commerce Booking Platform</span>
@@ -170,34 +159,68 @@
           <div class="portfolio-card-body">
             <span class="portfolio-tag">E-Commerce</span>
             <h3>Session Booking Platform</h3>
-            <p>An e-commerce solution for instant session booking — live schedules, pack purchases, and WhatsApp integration.</p>
+            <p>An e-commerce solution for instant session booking. Live schedules, pack purchases, and WhatsApp integration all in one place.</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- ======== CTA STRIP ======== -->
+  <!-- BLOG PREVIEW -->
+  <section class="blog-section">
+    <div class="section-inner">
+      <p class="section-label">From the Blog</p>
+      <h2 class="section-title">Latest <span>Articles</span></h2>
+      <p class="section-sub">Insights on web design, digital marketing, and the tools shaping the future of online business.</p>
+      <div class="blog-grid">
+
+        <a href="blog-ai-video.html" class="blog-card">
+          <div class="blog-card-img" style="background:linear-gradient(135deg,#1a1a2e,#4a3080);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:3.5rem;">🎬</span>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-tag">AI Tools</span>
+            <h3>AI Video Creation: The Future of Content is Here</h3>
+            <p>From Runway to Sora, AI video generators are changing how creators work. Here is what you need to know, plus a real example I made myself.</p>
+            <span class="read-more">Read Article <span>&#8594;</span></span>
+          </div>
+        </a>
+
+        <a href="blog-seo.html" class="blog-card">
+          <div class="blog-card-img" style="background:linear-gradient(135deg,#0d2137,#1a5276);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:3.5rem;">🔍</span>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-tag">SEO</span>
+            <h3>Why SEO Matters for Your Website (And How to Get It Right)</h3>
+            <p>A website nobody finds is a missed opportunity. Learn what SEO actually does for your business and how the right strategy can change everything.</p>
+            <span class="read-more">Read Article <span>&#8594;</span></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <div class="cta-strip">
     <h2>Ready to build something great?</h2>
     <p>Let's create a website that works as hard as you do.</p>
     <a href="contact.html" class="btn btn-primary">Get In Touch</a>
   </div>
 
-  <!-- ======== FOOTER ======== -->
+  <!-- FOOTER -->
   <footer>
     <p>
-      &copy; <span id="year"></span> Arubu Enoch &mdash; 
+      &copy; <span id="year"></span> Arubu Enoch |
       Designed &amp; Built with 💛 &nbsp;|&nbsp;
       <a href="mailto:enocharubu@gmail.com">enocharubu@gmail.com</a>
     </p>
   </footer>
 
   <script>
-    // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile nav toggle
     const hamburger = document.getElementById('hamburger');
     const navLinks  = document.getElementById('nav-links');
     hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
