@@ -372,13 +372,16 @@ section { padding: 90px 6%; }
 
 .about-img {
   width: 100%;
+  max-width: 420px;
   max-height: 480px;
   object-fit: cover;
-  object-position: top;
+  object-position: center top;
   border-radius: var(--radius);
   position: relative;
   z-index: 1;
   box-shadow: var(--shadow);
+  display: block;
+  margin: 0 auto;
 }
 
 .about-content { padding-left: 1rem; }
