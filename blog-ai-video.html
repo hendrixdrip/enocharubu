@@ -122,7 +122,7 @@
       <h2>A Video I Generated Myself</h2>
 
       <p>
-        I wanted to see for myself how far these tools have come, so I created a short outro video
+        I wanted to see for myself how far these tools have come, so I created a short AI-generated video
         using one of the platforms above. Take a look:
       </p>
 
@@ -138,7 +138,7 @@
           <source src="assets/ai-video.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div class="blog-video-label">AI-generated video created by Arubu Enoch using VEO</div>
+        <div class="blog-video-label">AI-generated video created by Arubu Enoch using Runway Gen-3</div>
       </div>
 
       <p>
@@ -199,6 +199,53 @@
     </div>
   </div>
 
+  <!-- MORE ARTICLES -->
+  <section class="blog-section" style="background:var(--white); padding-top:0;">
+    <div class="section-inner">
+      <p class="section-label">Keep Reading</p>
+      <h2 class="section-title">More <span>Articles</span></h2>
+      <div class="blog-grid" id="blogGrid">
+
+        <a href="blog-seo.html" class="blog-card">
+          <div class="blog-card-img" style="background:linear-gradient(135deg,#0d2137,#1a5276);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:3rem;">🔍</span>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-tag">SEO</span>
+            <h3>Why SEO Matters for Your Website</h3>
+            <p>A website nobody finds is a missed opportunity. Learn what SEO actually does for your business.</p>
+            <span class="read-more">Read Article <span>&#8594;</span></span>
+          </div>
+        </a>
+
+        <a href="blog-website-vs-social.html" class="blog-card">
+          <div class="blog-card-img" style="background:linear-gradient(135deg,#1a2e1a,#2d6a2d);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:3rem;">🌐</span>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-tag">Web Design</span>
+            <h3>Why Your Business Needs a Website, Not Just Social Media</h3>
+            <p>Your Instagram page is not your business online. Here is why owning your own website matters.</p>
+            <span class="read-more">Read Article <span>&#8594;</span></span>
+          </div>
+        </a>
+
+        <a href="blog-brand-colors.html" class="blog-card">
+          <div class="blog-card-img" style="background:linear-gradient(135deg,#2e1a0e,#b05a10);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:3rem;">🎨</span>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-tag">Branding</span>
+            <h3>How to Choose the Right Colors for Your Brand</h3>
+            <p>Color is one of the most powerful tools in design. The right palette builds trust and recognition.</p>
+            <span class="read-more">Read Article <span>&#8594;</span></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <p>
@@ -213,6 +260,12 @@
     const navLinks  = document.getElementById('nav-links');
     hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+    const grid = document.getElementById('blogGrid');
+    let isDown = false, startX, scrollLeft;
+    grid.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - grid.offsetLeft; scrollLeft = grid.scrollLeft; });
+    grid.addEventListener('mouseleave', () => isDown = false);
+    grid.addEventListener('mouseup', () => isDown = false);
+    grid.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); grid.scrollLeft = scrollLeft - (e.pageX - grid.offsetLeft - startX); });
   </script>
 </body>
 </html>

@@ -173,7 +173,7 @@
       <p class="section-label">From the Blog</p>
       <h2 class="section-title">Latest <span>Articles</span></h2>
       <p class="section-sub">Insights on web design, digital marketing, and the tools shaping the future of online business.</p>
-      <div class="blog-grid">
+      <div class="blog-grid" id="blogGrid">
 
         <a href="blog-ai-video.html" class="blog-card">
           <div class="blog-card-img" style="background:linear-gradient(135deg,#1a1a2e,#4a3080);display:flex;align-items:center;justify-content:center;">
@@ -195,6 +195,30 @@
             <span class="blog-tag">SEO</span>
             <h3>Why SEO Matters for Your Website (And How to Get It Right)</h3>
             <p>A website nobody finds is a missed opportunity. Learn what SEO actually does for your business and how the right strategy can change everything.</p>
+            <span class="read-more">Read Article <span>&#8594;</span></span>
+          </div>
+        </a>
+
+        <a href="blog-website-vs-social.html" class="blog-card">
+          <div class="blog-card-img" style="background:linear-gradient(135deg,#1a2e1a,#2d6a2d);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:3.5rem;">🌐</span>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-tag">Web Design</span>
+            <h3>Why Your Business Needs a Website, Not Just Social Media</h3>
+            <p>Your Instagram page is not your business online. Here is why owning your own website is one of the smartest moves any business can make.</p>
+            <span class="read-more">Read Article <span>&#8594;</span></span>
+          </div>
+        </a>
+
+        <a href="blog-brand-colors.html" class="blog-card">
+          <div class="blog-card-img" style="background:linear-gradient(135deg,#2e1a0e,#b05a10);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:3.5rem;">🎨</span>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-tag">Branding</span>
+            <h3>How to Choose the Right Colors for Your Brand and Website</h3>
+            <p>Color is one of the most powerful tools in design. The right palette builds trust, sets your tone, and makes your brand instantly recognizable.</p>
             <span class="read-more">Read Article <span>&#8594;</span></span>
           </div>
         </a>
@@ -225,6 +249,18 @@
     const navLinks  = document.getElementById('nav-links');
     hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+    // Drag to scroll blog grid
+    const grid = document.getElementById('blogGrid');
+    let isDown = false, startX, scrollLeft;
+    grid.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - grid.offsetLeft; scrollLeft = grid.scrollLeft; });
+    grid.addEventListener('mouseleave', () => isDown = false);
+    grid.addEventListener('mouseup', () => isDown = false);
+    grid.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      grid.scrollLeft = scrollLeft - (e.pageX - grid.offsetLeft - startX);
+    });
   </script>
 </body>
 </html>
