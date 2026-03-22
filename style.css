@@ -9,7 +9,7 @@
   --blue:   #6077c0;
   --white:  #f5f4f0;
   --dark:   #1e2235;
-  --mid:    #7a8098;
+  --mid:    #626478;
   --card-bg:#ffffff;
   --shadow: 0 4px 24px rgba(69,80,115,0.13);
   --radius: 12px;
@@ -98,6 +98,12 @@ nav {
 
 .nav-links a:hover, .nav-links a.active { color: var(--gold); }
 .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+
+.nav-links a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
 
 /* Hamburger */
 .hamburger {
@@ -213,7 +219,7 @@ nav {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 28px;
+  padding: 14px 28px;
   border-radius: 6px;
   font-family: 'Outfit', sans-serif;
   font-size: 0.9rem;
@@ -605,7 +611,7 @@ section { padding: 90px 6%; }
 
 .services-full-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -826,14 +832,15 @@ section { padding: 90px 6%; }
   font-size: 0.93rem;
   color: var(--dark);
   background: var(--white);
-  transition: border-color 0.2s;
-  outline: none;
+  transition: border-color 0.2s, outline-color 0.2s;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--blue);
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
   background: #fff;
 }
 
@@ -876,7 +883,7 @@ section { padding: 90px 6%; }
    ============================================= */
 footer {
   background: var(--dark);
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.7);
   text-align: center;
   padding: 32px 6%;
   font-size: 0.85rem;
@@ -1055,3 +1062,52 @@ footer a { color: var(--gold); }
 .blog-back:hover { color: var(--gold); }
 
 @media (max-width: 680px) { .blog-card { min-width: 270px; max-width: 270px; } }
+
+/* =============================================
+   SKIP LINK (accessibility)
+   ============================================= */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 6%;
+  background: var(--gold);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 0 0 6px 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  z-index: 999;
+  transition: top 0.2s;
+  text-decoration: none;
+}
+.skip-link:focus { top: 0; }
+
+/* =============================================
+   FORM ERROR STATES
+   ============================================= */
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+  border-color: #e24b4a;
+}
+
+/* =============================================
+   REDUCED MOTION
+   ============================================= */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up { animation: none; opacity: 1; }
+}
+
+/* =============================================
+   MOBILE PADDING OVERRIDES
+   ============================================= */
+@media (max-width: 680px) {
+  section,
+  .blog-section,
+  .services-full,
+  .contact-section,
+  .portfolio-section,
+  .about-section { padding-top: 56px; padding-bottom: 56px; }
+  .cta-strip { padding: 50px 5%; }
+  .page-hero { padding: calc(var(--nav-h) + 48px) 5% 48px; }
+  .blog-body { padding: 48px 5%; }
+}

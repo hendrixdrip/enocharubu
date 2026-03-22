@@ -9,6 +9,7 @@
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <nav>
     <a href="index.html" class="nav-logo">
@@ -24,6 +25,8 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
+
+  <main id="main-content">
 
   <section class="hero">
     <div class="hero-inner">
@@ -41,7 +44,7 @@
         </div>
       </div>
       <div class="hero-photo-wrap fade-up delay-2">
-        <img src="assets/photo.jpg" alt="Arubu Enoch" class="hero-photo"
+        <img src="assets/photo.jpg" alt="Arubu Enoch" width="340" height="420" class="hero-photo"
              onerror="this.style.display='none';document.getElementById('photo-placeholder').style.display='flex';" />
         <div class="hero-photo-placeholder" id="photo-placeholder" style="display:none;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
@@ -58,7 +61,7 @@
     <div class="section-inner">
       <div class="about-grid">
         <div class="about-img-wrap">
-          <img src="assets/photo.jpg" alt="Arubu Enoch" class="about-img"
+          <img src="assets/photo.jpg" alt="Arubu Enoch" width="420" height="480" class="about-img"
                onerror="this.src='https://placehold.co/500x480/455073/ffffff?text=Arubu+Enoch';" />
         </div>
         <div class="about-content">
@@ -169,7 +172,7 @@
       <p class="section-sub">Practical writing on web design, social media, and the tools worth knowing about.</p>
       <div class="blog-grid" id="blogGrid">
 
-        <a href="blog-ai-video.html" class="blog-card">
+        <a href="blog-ai-video.html" class="blog-card" aria-label="Read article: AI Video Creation: What It Is and Why It Matters Now" aria-label="Read article: AI Video Creation: What It Is and Why It Matters Now">
           <div class="blog-card-img" style="background:linear-gradient(135deg,#1a1a2e,#4a3080);display:flex;align-items:center;justify-content:center;">
             <span style="font-size:3.5rem;">🎬</span>
           </div>
@@ -181,7 +184,7 @@
           </div>
         </a>
 
-        <a href="blog-seo.html" class="blog-card">
+        <a href="blog-seo.html" class="blog-card" aria-label="Read article: What SEO Actually Does for Your Website" aria-label="Read article: What SEO Actually Does for Your Website">
           <div class="blog-card-img" style="background:linear-gradient(135deg,#0d2137,#1a5276);display:flex;align-items:center;justify-content:center;">
             <span style="font-size:3.5rem;">🔍</span>
           </div>
@@ -193,7 +196,7 @@
           </div>
         </a>
 
-        <a href="blog-website-vs-social.html" class="blog-card">
+        <a href="blog-website-vs-social.html" class="blog-card" aria-label="Read article: Your Instagram Page is Not Your Website" aria-label="Read article: Your Instagram Page is Not Your Website">
           <div class="blog-card-img" style="background:linear-gradient(135deg,#1a2e1a,#2d6a2d);display:flex;align-items:center;justify-content:center;">
             <span style="font-size:3.5rem;">🌐</span>
           </div>
@@ -205,7 +208,7 @@
           </div>
         </a>
 
-        <a href="blog-brand-colors.html" class="blog-card">
+        <a href="blog-brand-colors.html" class="blog-card" aria-label="Read article: Picking Colors for Your Brand Without Second-Guessing Yourself" aria-label="Read article: Picking Colors for Your Brand Without Second-Guessing Yourself">
           <div class="blog-card-img" style="background:linear-gradient(135deg,#2e1a0e,#b05a10);display:flex;align-items:center;justify-content:center;">
             <span style="font-size:3.5rem;">🎨</span>
           </div>
@@ -226,6 +229,8 @@
     <p>Send me a message and let's figure out what you need.</p>
     <a href="contact.html" class="btn btn-primary">Get In Touch</a>
   </div>
+
+  </main>
 
   <footer>
     <p>
