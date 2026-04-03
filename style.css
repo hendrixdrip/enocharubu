@@ -1098,6 +1098,206 @@ footer a { color: var(--gold); }
 }
 
 /* =============================================
+   WHATSAPP FLOATING WIDGET
+   ============================================= */
+.wa-widget {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.wa-bubble {
+  width: 58px;
+  height: 58px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.wa-bubble:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37,211,102,0.6);
+}
+
+.wa-bubble:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.wa-bubble::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(37,211,102,0.4);
+  animation: wa-pulse 2.2s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes wa-pulse {
+  0%   { transform: scale(0.88); opacity: 1; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+.wa-card {
+  width: 300px;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(30,34,53,0.2);
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.wa-card.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+
+.wa-card-header {
+  background: #075e54;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.wa-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #fff;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.wa-card-header-text { flex: 1; min-width: 0; }
+
+.wa-name {
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wa-status {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.74rem;
+  margin-top: 2px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.wa-status-dot { color: #4cff85; }
+
+.wa-close {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.65);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 6px;
+  line-height: 1;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.wa-close:hover { color: #fff; background: rgba(255,255,255,0.1); }
+
+.wa-body {
+  padding: 16px;
+  background: #ece5dd;
+}
+
+.wa-message-bubble {
+  background: #fff;
+  border-radius: 0 12px 12px 12px;
+  padding: 10px 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  color: #333;
+  line-height: 1.6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: inline-block;
+  max-width: 100%;
+  position: relative;
+}
+
+.wa-message-bubble::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -8px;
+  border: 8px solid transparent;
+  border-top-color: #fff;
+  border-right-color: #fff;
+}
+
+.wa-message-time {
+  font-size: 0.68rem;
+  color: #999;
+  text-align: right;
+  margin-top: 5px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.wa-footer {
+  padding: 14px 16px;
+  background: #fff;
+  border-top: 1px solid #f0f0f0;
+}
+
+.wa-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 18px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  letter-spacing: 0.02em;
+}
+.wa-cta-btn:hover { background: #1aab56; color: #fff; transform: translateY(-1px); }
+.wa-cta-btn:active { transform: translateY(0); }
+
+@media (max-width: 680px) {
+  .wa-widget { bottom: 20px; right: 16px; }
+  .wa-card { width: 272px; }
+  .wa-bubble { width: 52px; height: 52px; }
+}
+
+/* =============================================
    MOBILE PADDING OVERRIDES
    ============================================= */
 @media (max-width: 680px) {
