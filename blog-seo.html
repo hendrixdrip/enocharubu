@@ -273,6 +273,307 @@
       }
     })();
   </script>
+<!-- ================================================
+     AI LIVE CHAT WIDGET
+     ================================================ -->
+<style>
+  .ai-widget {
+    position: fixed;
+    bottom: 100px; /* sits above the WhatsApp bubble */
+    right: 24px;
+    z-index: 9998;
+    font-family: 'Inter', sans-serif;
+  }
+  .ai-bubble {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a1a2e, #c9a84c);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    margin-left: auto;
+  }
+  .ai-bubble:hover { transform: scale(1.08); }
+  .ai-bubble svg { width: 26px; height: 26px; }
+  .ai-card {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 320px;
+    background: #12122a;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: 450px;
+  }
+  .ai-card.open { display: flex; }
+  .ai-card-header {
+    background: linear-gradient(135deg, #1a1a2e, #0d0d1f);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .ai-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c9a84c, #e8c96a);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 12px; color: #0d0d1f; flex-shrink: 0;
+  }
+  .ai-card-header-text { flex: 1; }
+  .ai-name { color: #fff; font-weight: 600; font-size: 14px; }
+  .ai-status { color: rgba(255,255,255,0.5); font-size: 11px; margin-top: 2px; }
+  .ai-status-dot { color: #22c55e; }
+  .ai-close {
+    background: none; border: none; color: rgba(255,255,255,0.5);
+    cursor: pointer; font-size: 16px; padding: 4px;
+    transition: color 0.2s;
+  }
+  .ai-close:hover { color: #fff; }
+  .ai-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 180px;
+    max-height: 260px;
+  }
+  .ai-msg {
+    max-width: 85%;
+    padding: 10px 13px;
+    border-radius: 12px;
+    font-size: 13px;
+    line-height: 1.5;
+    animation: fadeInMsg 0.2s ease;
+  }
+  @keyframes fadeInMsg {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .ai-msg.bot {
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.85);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .ai-msg.user {
+    background: linear-gradient(135deg, #c9a84c, #e8c96a);
+    color: #0d0d1f;
+    align-self: flex-end;
+    font-weight: 500;
+    border-bottom-right-radius: 4px;
+  }
+  .ai-msg.thinking {
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.4);
+    align-self: flex-start;
+    font-style: italic;
+    font-size: 12px;
+  }
+  .ai-msg.error {
+    background: rgba(239,68,68,0.15);
+    color: #fca5a5;
+    align-self: flex-start;
+  }
+  .ai-input-row {
+    display: flex;
+    gap: 8px;
+    padding: 12px 14px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.03);
+  }
+  .ai-input {
+    flex: 1;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+    font-family: inherit;
+  }
+  .ai-input:focus { border-color: rgba(201,168,76,0.5); }
+  .ai-input::placeholder { color: rgba(255,255,255,0.3); }
+  .ai-send {
+    width: 38px; height: 38px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #c9a84c, #e8c96a);
+    border: none;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .ai-send:hover { opacity: 0.85; transform: scale(1.05); }
+  .ai-send:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+  .ai-send svg { width: 16px; height: 16px; }
+</style>
+
+<div class="ai-widget" id="aiWidget">
+  <div class="ai-card" id="aiCard">
+    <div class="ai-card-header">
+      <div class="ai-avatar">AI</div>
+      <div class="ai-card-header-text">
+        <div class="ai-name">Arubu's AI Assistant</div>
+        <div class="ai-status"><span class="ai-status-dot">●</span> Online — ask me anything</div>
+      </div>
+      <button class="ai-close" id="aiClose" aria-label="Close chat">✕</button>
+    </div>
+    <div class="ai-messages" id="aiMessages">
+      <div class="ai-msg bot">
+        Hi! 👋 I'm Arubu's AI assistant. Ask me about services, pricing, timelines — anything you'd like to know.
+      </div>
+    </div>
+    <div class="ai-input-row">
+      <textarea
+        class="ai-input"
+        id="aiInput"
+        placeholder="Type your question..."
+        rows="1"
+        maxlength="500"
+      ></textarea>
+      <button class="ai-send" id="aiSend" aria-label="Send message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0d0d1f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <button class="ai-bubble" id="aiBubble" aria-label="Chat with AI Assistant">
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  // ── CONFIG — change this to your Render URL ──────────────────────
+  var SERVER = 'https://arubu-chat-server.onrender.com';
+  var POLL_INTERVAL = 2000;   // check every 2 seconds
+  var POLL_TIMEOUT  = 30000;  // give up after 30 seconds
+  // ─────────────────────────────────────────────────────────────────
+
+  var bubble   = document.getElementById('aiBubble');
+  var card     = document.getElementById('aiCard');
+  var closeBtn = document.getElementById('aiClose');
+  var input    = document.getElementById('aiInput');
+  var sendBtn  = document.getElementById('aiSend');
+  var msgs     = document.getElementById('aiMessages');
+
+  var sessionId    = null;
+  var isWaiting    = false;
+  var pollTimer    = null;
+  var pollStart    = null;
+
+  // Open / close
+  bubble.addEventListener('click', function(){
+    card.classList.toggle('open');
+    if (card.classList.contains('open')) input.focus();
+  });
+  closeBtn.addEventListener('click', function(){ card.classList.remove('open'); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') card.classList.remove('open');
+  });
+
+  // Auto-resize textarea
+  input.addEventListener('input', function(){
+    this.style.height = 'auto';
+    this.style.height = Math.min(this.scrollHeight, 80) + 'px';
+  });
+
+  // Send on Enter (Shift+Enter = newline)
+  input.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
+  sendBtn.addEventListener('click', sendMessage);
+
+  function addMsg(text, type) {
+    var div = document.createElement('div');
+    div.className = 'ai-msg ' + type;
+    div.textContent = text;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+    return div;
+  }
+
+  function setWaiting(state) {
+    isWaiting    = state;
+    sendBtn.disabled = state;
+    input.disabled   = state;
+  }
+
+  function sendMessage() {
+    var text = input.value.trim();
+    if (!text || isWaiting) return;
+
+    addMsg(text, 'user');
+    input.value = '';
+    input.style.height = 'auto';
+    setWaiting(true);
+
+    var thinkingEl = addMsg('Thinking…', 'thinking');
+
+    fetch(SERVER + '/send-message', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: text, sessionId: sessionId })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (data.error) throw new Error(data.error);
+      sessionId = data.sessionId;
+      pollStart = Date.now();
+      pollTimer = setInterval(function(){ pollForReply(thinkingEl); }, POLL_INTERVAL);
+    })
+    .catch(function(err){
+      thinkingEl.remove();
+      addMsg('Sorry, something went wrong. Please try WhatsApp instead.', 'error');
+      setWaiting(false);
+    });
+  }
+
+  function pollForReply(thinkingEl) {
+    if (Date.now() - pollStart > POLL_TIMEOUT) {
+      clearInterval(pollTimer);
+      thinkingEl.remove();
+      addMsg('The AI is taking longer than usual. Try WhatsApp for a faster response!', 'error');
+      setWaiting(false);
+      return;
+    }
+
+    fetch(SERVER + '/poll-reply/' + sessionId)
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (data.status === 'ready') {
+        clearInterval(pollTimer);
+        thinkingEl.remove();
+        addMsg(data.reply, 'bot');
+        setWaiting(false);
+      }
+      // if 'pending', just wait for next poll
+    })
+    .catch(function(){
+      // network hiccup — keep polling
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
